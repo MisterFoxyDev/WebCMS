@@ -1,0 +1,61 @@
+/* Styles pour améliorer le responsive */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .card-img-top {
+    height: 250px;
+    object-fit: cover;
+  }
+}
+
+.card {
+  transition: transform 0.2s;
+  margin-bottom: 2rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 1rem 1.5rem;
+}
+
+.btn-primary {
+  margin-top: 1rem;
+}

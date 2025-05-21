@@ -1,0 +1,38 @@
+/* Styles personnalisés pour la navigation */
+.nav-link:hover,
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Style pour le menu déroulant */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Style pour les liens du menu déroulant */
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease;
+}
+
+/* Style pour le survol des liens du menu déroulant */
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Messages d'alerte */
+.alert-success-message {
+  color: black;
+  background-color: #d4edda;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.alert-error-message {
+  color: black;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+}

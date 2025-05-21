@@ -1,0 +1,58 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers d'environnement
+.env
+.env.*
+!.env.example
+
+# Dossiers de développement
+/vendor/
+/node_modules/
+/.vscode/
+/.idea/
+
+# Fichiers de logs
+*.log
+logs/
+error_log
+
+# Fichiers de cache
+*.cache
+*.tmp
+*.temp
+
+# Images de développement
+/img/dev/
+/img/temp/
+/img/uploads/temp/
+
+# Fichiers de configuration sensibles
+config.php
+database.php
+*.config.php
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~
+
+# Fichiers de build
+/dist/
+/build/
+
+# Fichiers de dépendances
+composer.lock
+package-lock.json
+yarn.lock
+
+# Fichiers de test
+/tests/
+/phpunit.xml
+.phpunit.result.cache
+
+# Fichiers de documentation générés
+/docs/_build/
+/docs/_static/ 
