@@ -1,0 +1,11 @@
+# Ignorer tous les fichiers JavaScript minifiés
+**/*.min.js
+# Ignorer tous les fichiers CSSS minifiés
+**/*.min.css
+
+# Ignorer les fichiers dans le dossier node_modules
+node_modules/
+
+# Ignorer les fichiers de build
+build/
+dist/ 
