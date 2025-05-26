@@ -13,8 +13,8 @@ if (isset($_GET["email"]) && !empty($_GET["email"]) && isset($_GET["token"]) && 
     $user = $req->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Mise à jour du statut de validation
-        $update = $bdd->prepare("UPDATE users SET user_email_validation = 1 WHERE user_email = :email");
+        // Mise à jour du statut de validation et du token
+        $update = $bdd->prepare("UPDATE users SET user_email_validation = 1, user_token = 'Email validé' WHERE user_email = :email");
         $update->bindValue(":email", $email);
         $updateRes = $update->execute();
 

@@ -1,7 +1,12 @@
 <?php
-$dsn = "mysql:dbname=webcms;host=localhost";
-$user = "root";
-$password = "";
+require_once __DIR__ . '/loadEnv.php';
+
+// Charger les variables d'environnement
+loadEnv(__DIR__ . '/../.env');
+
+$dsn = "mysql:dbname=" . getenv('DB_NAME') . ";host=" . getenv('DB_HOST');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 
 try {
     $bdd = new PDO($dsn, $user, $password);

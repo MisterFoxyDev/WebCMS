@@ -6,25 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 require __DIR__ . "/PHPMailer.php";
 require __DIR__ . "/Exception.php";
 require __DIR__ . "/SMTP.php";
-
-// Fonction pour charger les variables d'environnement
-function loadEnv($path)
-{
-    if (!file_exists($path)) {
-        throw new Exception('.env file not found');
-    }
-
-    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos($line, '=') !== false && strpos($line, '#') !== 0) {
-            list($key, $value) = explode('=', $line, 2);
-            $key = trim($key);
-            $value = trim($value);
-            putenv("$key=$value");
-            $_ENV[$key] = $value;
-        }
-    }
-}
+require_once __DIR__ . "/../loadEnv.php";
 
 // Charger les variables d'environnement
 loadEnv(__DIR__ . '/../../.env');
@@ -53,23 +35,12 @@ $mail->addAddress($_POST['email']);
 $mail->isHTML(true);
 
 $mail->Subject = "Confirmation d'adresse mail";
+require_once "includes/token.php";
+$mail->Body = 'Bienvenue ! Afin de valider votre inscription, merci de cliquer sur le lien suivant : <a href="' . getenv('APP_URL') . '/verification.php?token=' . $token . '&email=' . $_POST['email'] . '">Confirmation</a>';
 
-// Récupérer le token de l'utilisateur
-require_once __DIR__ . "/../../includes/bdd.php";
-$email = $_POST['email'];
-$tokenReq = $bdd->prepare("SELECT user_token FROM users WHERE user_email = :email");
-$tokenReq->bindValue(":email", $email);
-$tokenReq->execute();
-$tokenData = $tokenReq->fetch(PDO::FETCH_ASSOC);
-$token = $tokenData['user_token'];
-
-$mail->Body = 'Bienvenue ! Afin de valider votre inscription, merci de cliquer sur le lien suivant : <a href="http://' . $_SERVER['HTTP_HOST'] . '/webcms/verification.php?token=' . $token . '&email=' . $_POST['email'] . '">Confirmation</a>';
-
-try {
-    $mail->send();
-    $GLOBALS['mail_success'] = true;
-    $GLOBALS['mail_message'] = "Un mail de confirmation vient d'être envoyé à votre adresse mail pour valider votre inscription !";
-} catch (Exception $e) {
-    $GLOBALS['mail_success'] = false;
-    $GLOBALS['mail_message'] = "Mail non envoyé, veuillez rééssayer";
+if (!$mail->send()) {
+    $GLOBALS['mail_confirmation_message'] = "Mail non envoyé, veuillez rééssayer";
+    echo "Erreur : " . $mail->ErrorInfo;
+} else {
+    $GLOBALS['mail_confirmation_message'] = "Un mail de confirmation vient d'être envoyé à votre adresse mail pour valider votre inscription !";
 }

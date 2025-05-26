@@ -7,7 +7,7 @@ if (isset($_POST["reset"])) {
     } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $message = "Veuillez entrer une adresse valide";
     } else {
-        require_once "includes/bdd.php";
+        require_once "../includes/bdd.php";
         $req = $bdd->prepare("SELECT * FROM users WHERE user_email=:email AND user_role=:user_role");
         $req->bindValue(":email", $_POST["email"]);
         $req->bindValue(":user_role", "admin");
@@ -19,22 +19,22 @@ if (isset($_POST["reset"])) {
             $message = "L'adresse saisie ne correspond à aucune adresse existante";
         } else {
             if ($res["user_email_validation"] != 1) {
-                require_once "includes/token.php";
+                require_once "../includes/token.php";
                 $update = $bdd->prepare("UPDATE users SET user_token=:token WHERE user_email=:email AND user_role=:user_role");
                 $update->bindValue(":token", $token);
                 $update->bindValue(":email", $_POST["email"]);
                 $update->bindValue(":user_role", "admin");
                 $update->execute();
-                require_once "includes/PHPMailer/sendmail.php";
+                require_once "../includes/PHPMailer/sendmail.php";
             } else {
-                require_once "includes/token.php";
+                require_once "../includes/token.php";
                 $update = $bdd->prepare("UPDATE users SET user_token=:token WHERE user_email=:email AND user_role=:user_role");
                 $update->bindValue(":token", $token);
                 $update->bindValue(":email", $_POST["email"]);
                 $update->bindValue(":user_role", "admin");
                 $update->execute();
 
-                require_once "includes/PHPMailer/sendmail_resetPassword.php";
+                require_once "../includes/PHPMailer/sendmail_resetPassword.php";
             }
         }
     }
