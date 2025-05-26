@@ -7,12 +7,34 @@ require __DIR__ . "/PHPMailer.php";
 require __DIR__ . "/Exception.php";
 require __DIR__ . "/SMTP.php";
 
+// Fonction pour charger les variables d'environnement
+function loadEnv($path)
+{
+    if (!file_exists($path)) {
+        throw new Exception('.env file not found');
+    }
+
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos($line, '=') !== false && strpos($line, '#') !== 0) {
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            putenv("$key=$value");
+            $_ENV[$key] = $value;
+        }
+    }
+}
+
+// Charger les variables d'environnement
+loadEnv(__DIR__ . '/../../.env');
+
 $mail = new PHPMailer(true);
 $mail->isSMTP();
-$mail->Host = "smtp.gmail.com";
+$mail->Host = getenv('SMTP_HOST');
 $mail->SMTPAuth = true;
-$mail->Username = "misterfoxydev@gmail.com";
-$mail->Password = "xnew zewg yhqz nlvx";
+$mail->Username = getenv('SMTP_USERNAME');
+$mail->Password = getenv('SMTP_PASSWORD');
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
 $mail->SMTPDebug = 0;
@@ -26,7 +48,7 @@ $mail->SMTPOptions = array(
     )
 );
 
-$mail->setFrom("webcms2up@gmail.com", "Webcms");
+$mail->setFrom(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME'));
 $mail->addAddress($_POST['email']);
 $mail->isHTML(true);
 
