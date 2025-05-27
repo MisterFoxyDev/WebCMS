@@ -122,8 +122,8 @@ function redirectWithMessage($operation, $success = true)
 
 function createNewCategory($bdd)
 {
-    if (empty($_POST["categoryName"]) || !preg_match("/^[\p{L}\s0-9-]+$/u", $_POST["categoryName"])) {
-        $_SESSION['error_message'] = "Veuillez entrer une catégorie valide (lettres, chiffres, espaces et tirets uniquement)";
+    if (empty($_POST["categoryName"]) || !preg_match("/^[\p{L}\s0-9-\/]+$/u", $_POST["categoryName"])) {
+        $_SESSION['error_message'] = "Veuillez entrer une catégorie valide (lettres, chiffres, espaces, tirets et barres obliques uniquement)";
         header("Location: categories.php");
         exit();
     }
@@ -157,8 +157,8 @@ function createNewCategory($bdd)
 
 function updateCategory($bdd)
 {
-    if (empty($_POST["category_name_modif"]) || !preg_match("/^[\p{L}\s0-9-]+$/u", $_POST["category_name_modif"])) {
-        $_SESSION['error_message'] = "Veuillez entrer une catégorie valide (lettres, chiffres, espaces et tirets uniquement)";
+    if (empty($_POST["category_name_modif"]) || !preg_match("/^[\p{L}\s0-9-\/]+$/u", $_POST["category_name_modif"])) {
+        $_SESSION['error_message'] = "Veuillez entrer une catégorie valide (lettres, chiffres, espaces, tirets et barres obliques uniquement)";
         header("Location: categories.php");
         exit();
     }

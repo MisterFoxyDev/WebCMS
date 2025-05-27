@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "includes/bdd.php";
+require_once "../includes/bdd.php";
 require_once "functions.php";
 
 // Vérifier si l'utilisateur est connecté et est admin

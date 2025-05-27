@@ -2,7 +2,7 @@
 session_start();
 
 require_once "includes/admin_header.php";
-require_once "includes/bdd.php";
+require_once "../includes/bdd.php";
 require_once "../includes/token.php";
 require_once "../includes/image_utils.php";
 require_once "functions.php";

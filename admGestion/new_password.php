@@ -6,7 +6,7 @@ $email = isset($_GET["email"]) ? $_GET["email"] : (isset($_POST["email"]) ? $_PO
 $token = isset($_GET["token"]) ? $_GET["token"] : (isset($_POST["token"]) ? $_POST["token"] : "");
 
 if (!empty($email) && !empty($token)) {
-    require_once "includes/bdd.php";
+    require_once "../includes/bdd.php";
     $req = $bdd->prepare("SELECT * FROM users WHERE user_email=:email AND user_token=:token AND user_role=:user_role");
     $req->bindValue(":email", $email);
     $req->bindValue(":token", $token);

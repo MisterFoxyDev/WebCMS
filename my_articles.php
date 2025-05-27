@@ -51,7 +51,7 @@ if (isset($_SESSION['error_message'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Gestion des articles</h1>
+                    <h1 class="h3 pt-4 mb-4 text-gray-800">Gestion des articles</h1>
 
                     <?php if (isset($_SESSION['success_message'])): ?>
                         <div class="alert alert-success">

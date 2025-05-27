@@ -20,48 +20,6 @@
     </li>
 
     <!-- Divider -->
-    <!-- <hr class="sidebar-divider"> -->
-
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-        Interface
-    </div> -->
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Composants</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li> -->
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li> -->
-
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -69,21 +27,32 @@
         PAGES
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Articles -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-folder"></i>
             <span>Articles</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Gestion des articles :</h6>
-                <a class="collapse-item" href="new_article.php">Nouvel article</a>
-                <a class="collapse-item" href="all_articles.php">Tous les articles</a>
-                <a class="collapse-item" href="comments.php">Tous les commentaires</a>
-            </div>
-        </div>
+        <ul class="nav-item-submenu" style="list-style: none; padding-left: 2.5rem;">
+            <li style="list-style: none;">
+                <a class="nav-link" href="new_article.php">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Nouvel article</span>
+                </a>
+            </li>
+            <li style="list-style: none;">
+                <a class="nav-link" href="all_articles.php">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Tous les articles</span>
+                </a>
+            </li>
+            <li style="list-style: none;">
+                <a class="nav-link" href="comments.php">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Tous les commentaires</span>
+                </a>
+            </li>
+        </ul>
     </li>
 
     <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>

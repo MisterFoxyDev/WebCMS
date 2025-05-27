@@ -134,7 +134,7 @@ if (isset($_GET["category_id"])) {
                 <div class="row">
                     <!-- Blog Entries Column -->
                     <div class="col-lg-8">
-                        <h1 class="my-4"><?php echo $pageTitle; ?></h1>
+                        <h1 class="mb-4 px-2"><?php echo $pageTitle; ?></h1>
                         <?php if ($security->isAuthenticated() && (!isset($_SESSION['email_validated']) || $_SESSION['email_validated'] != 1)): ?>
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="fas fa-exclamation-triangle me-2"></i>

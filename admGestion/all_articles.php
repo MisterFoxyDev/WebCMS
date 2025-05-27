@@ -2,7 +2,7 @@
 session_start();
 
 require_once "includes/admin_header.php";
-require_once "includes/bdd.php";
+require_once "../includes/bdd.php";
 require_once "functions.php";
 
 // Gestion de la suppression d'article

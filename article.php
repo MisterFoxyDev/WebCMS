@@ -249,16 +249,16 @@ if (isset($_GET["id"])) {
                             href="index.php?category_id=<?php echo $article["category_id"]; ?>"><?php echo htmlspecialchars($article["category_name"]); ?></a>
                     </div>
                     <br>
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="width: 100%;">
                         <?php if (!empty($img)): ?>
                             <img class="card-img-top" src="img/images_articles/<?php echo htmlspecialchars($img); ?>"
                                 alt="Image de l'article" style="max-height: 400px; object-fit: cover;">
                         <?php endif; ?>
                         <div class="card-body">
                             <h2 class="card-title"><?php echo htmlspecialchars($title); ?></h2>
-                            <p class="card-text">
+                            <div class="card-text" style="width: 100%; word-wrap: break-word; white-space: normal;">
                                 <?php echo cleanHtml($content); ?>
-                            </p>
+                            </div>
                         </div>
                         <div class="card-footer text-muted">
                             <?php

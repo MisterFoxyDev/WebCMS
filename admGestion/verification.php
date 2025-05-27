@@ -1,6 +1,6 @@
 <?php
 
-require_once "includes/bdd.php";
+require_once "../includes/bdd.php";
 
 if (isset($_GET["email"]) && !empty($_GET["email"]) && isset($_GET["token"]) && !empty($_GET["token"])) {
     $email = $_GET["email"];
